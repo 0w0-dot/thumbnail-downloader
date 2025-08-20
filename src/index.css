@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for animations and effects not easily achievable with Tailwind */
+@keyframes neonGlow {
+  from {
+    text-shadow: 
+      0 0 10px theme(colors.neon-pink),
+      0 0 20px theme(colors.neon-pink),
+      0 0 30px theme(colors.neon-pink);
+  }
+  to {
+    text-shadow: 
+      0 0 5px theme(colors.neon-pink),
+      0 0 10px theme(colors.neon-pink),
+      0 0 15px theme(colors.neon-pink),
+      0 0 20px theme(colors.neon-pink);
+  }
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Global base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom utility classes */
+.text-neon-glow-pink {
+  color: theme(colors.neon-pink);
+  text-shadow: 
+    0 0 10px theme(colors.neon-pink),
+    0 0 20px theme(colors.neon-pink);
+}
+
+.text-neon-glow-blue {
+  color: theme(colors.neon-blue);
+  text-shadow: 
+    0 0 10px theme(colors.neon-blue),
+    0 0 20px theme(colors.neon-blue);
+}
+
+.text-neon-glow-yellow {
+  color: theme(colors.neon-yellow);
+  text-shadow: 
+    0 0 10px theme(colors.neon-yellow),
+    0 0 20px theme(colors.neon-yellow);
+}
+
+/* Grid background effect */
+.cyber-grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Scanline effect overlay */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 212, 255, 0.05) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: scanlines 0.1s linear infinite;
+}
